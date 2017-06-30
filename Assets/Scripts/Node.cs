@@ -8,13 +8,19 @@ public class Node : MonoBehaviour {
 	private Color originalColor;
 	private GameObject turret;
 	private Renderer r;
+	TurretBuilder turretBuilder;
+
 
 	void Start () {
 		r = GetComponent<Renderer> ();
 		originalColor = r.material.color;
+		turretBuilder = TurretBuilder.builder;
 	}
 
 	void OnMouseEnter() {
+		if (turretBuilder.GetTurretToBuild () == null) {
+			return;
+		}
 		r.material.color = hoverColor;
 	}
 
@@ -23,6 +29,9 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
+		if (turretBuilder.GetTurretToBuild () == null) {
+			return;
+		}
 		if (turret != null) {
 			// Should display this on the screen somewhere
 			Debug.Log ("Gotta destroy the turret!");

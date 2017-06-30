@@ -9,10 +9,12 @@ public class TurretBuilder : MonoBehaviour {
 	}
 
 	public GameObject bulletTurretPrefab;
+	public GameObject flamethrowerTurretPrefab;
+	public GameObject laserTurretPrefab;
 	private GameObject turretToBuild;
 
-	void Start () {
-		turretToBuild = bulletTurretPrefab;
+	public void SetTurretToBuild (GameObject turret) {
+		turretToBuild = turret;
 	}
 
 	public GameObject GetTurretToBuild() {
