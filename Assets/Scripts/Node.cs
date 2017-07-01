@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
@@ -18,6 +17,9 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseEnter() {
+		if (EventSystem.current.IsPointerOverGameObject ()) {
+			return;
+		}
 		if (turretBuilder.GetTurretToBuild () == null) {
 			return;
 		}
@@ -29,6 +31,9 @@ public class Node : MonoBehaviour {
 	}
 
 	void OnMouseUpAsButton() {
+		if (EventSystem.current.IsPointerOverGameObject ()) {
+			return;
+		}
 		if (turretBuilder.GetTurretToBuild () == null) {
 			return;
 		}
