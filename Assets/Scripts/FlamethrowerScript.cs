@@ -7,6 +7,7 @@ public class FlamethrowerScript : MonoBehaviour {
 	public float damageRadius;
 	public float speed;
 	public GameObject flameParticleImpact;
+	public GameObject empty;
 
 	public void ChaseTarget (Transform flameTarget) {
 		target = flameTarget;
@@ -24,7 +25,7 @@ public class FlamethrowerScript : MonoBehaviour {
 
 	void HitTarget() {
 		// TODO: Change this so that it depends on enemy health!!!
-		MakeExplosion ();
+//		MakeExplosion ();
 		if (damageRadius > 0f) {
 			Explode ();
 		} else {
@@ -56,8 +57,16 @@ public class FlamethrowerScript : MonoBehaviour {
 	}
 
 	void Damage(Transform enemy) {
+		if (target.transform.Find ("Empty(Clone)")) {
+			Destroy (enemy.gameObject, 1f);
+			return;
+		}
+		GameObject emptyObj = (GameObject)Instantiate (empty, target.position, target.rotation);
+		emptyObj.transform.parent = target.transform;
+		// Make sure to check the destroying enemy.gameobject on health down
 		Destroy (enemy.gameObject, 1f);
-		Destroy (gameObject, 0.5f);
+		Destroy (gameObject);
+		MakeExplosion ();
 		Stats.Cash += 10;
 	}
 
@@ -67,12 +76,10 @@ public class FlamethrowerScript : MonoBehaviour {
 	}
 
 	void MakeExplosion () {
-//		Debug.Log (target.transform.Find ("FireExplosion(Clone)"));
 		if (target.transform.Find ("FireExplosion(Clone)")) {
 			return;
 		}
 		GameObject particleImpact = (GameObject)Instantiate (flameParticleImpact, target.position, target.rotation);
-		particleImpact.transform.parent = target.transform;
 		Destroy (particleImpact, 1.5f);
 	}
 }
