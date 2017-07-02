@@ -7,8 +7,6 @@ public class FlamethrowerScript : MonoBehaviour {
 	public float damageRadius;
 	public float speed;
 	public GameObject flameParticleImpact;
-	private bool hasTargetBeenHit = false;
-
 
 	public void ChaseTarget (Transform flameTarget) {
 		target = flameTarget;
@@ -60,6 +58,7 @@ public class FlamethrowerScript : MonoBehaviour {
 	void Damage(Transform enemy) {
 		Destroy (enemy.gameObject, 1f);
 		Destroy (gameObject, 0.5f);
+		Stats.Cash += 10;
 	}
 
 	void OnDrawGizmosSelected () {

@@ -1,29 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
+[System.Serializable]
 public class Shop : MonoBehaviour {
 
 	TurretBuilder turretBuilder;
+	public TurretPrefabClass bulletTurret;
+	public TurretPrefabClass flamethrowerTurret;
+	public TurretPrefabClass laserTurret;
+	public Text bulletTurretCost;
+	public Text flamethrowerTurretCost;
+	public Text laserTurretCost;
 
 	void Start() {
 		turretBuilder = TurretBuilder.builder;
+		bulletTurretCost.text = "$" + bulletTurret.cost.ToString();
+		flamethrowerTurretCost.text = "$" + flamethrowerTurret.cost.ToString();
+		laserTurretCost.text = "$" + laserTurret.cost.ToString();
 	}
 
-	public void PurchaseBulletTurret() {
+	public void SelectBulletTurret() {
 		Debug.Log ("bullet turret selected");
-		turretBuilder.SetTurretToBuild (turretBuilder.bulletTurretPrefab);
+		turretBuilder.SelectTurretToBuild (bulletTurret);
 	}
 
-	public void PurchaseFlamethrowerTurret() {
-		Debug.Log ("bullet turret selected");
+	public void SelectFlamethrowerTurret() {
+		Debug.Log ("flame turret selected");
 
-		turretBuilder.SetTurretToBuild (turretBuilder.flamethrowerTurretPrefab);
+		turretBuilder.SelectTurretToBuild (flamethrowerTurret);
 	}
 
-	public void PurchaseLaserTurret() {
-		Debug.Log ("bullet turret selected");
-		turretBuilder.SetTurretToBuild (turretBuilder.laserTurretPrefab);
+	public void SelectLaserTurret() {
+		Debug.Log ("laser turret selected");
+		turretBuilder.SelectTurretToBuild (laserTurret);
 	}
 		
 }

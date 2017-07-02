@@ -13,11 +13,12 @@ public class WaveSpawner : MonoBehaviour {
 	private float countdown = 2f;
 	public Text waveCountdownText;
 	private int waveNumber = 1;
-	private int enemiesToSpawn;
+	private int enemiesToSpawn = 0;
+	public Text moneyText;
 
 	void Update () {
 		// when countdown ends, spawn the next wave
-		if (countdown < 0f) {
+		if (countdown <= 0f) {
 			StartCoroutine(SpawnWave());
 			countdown = timeBetweenWaves;
 		}
@@ -26,8 +27,8 @@ public class WaveSpawner : MonoBehaviour {
 		if (enemiesToSpawn <= 0) {
 			countdown -= Time.deltaTime;
 		}
-		// update countdown timer UI
-		waveCountdownText.text = Mathf.Clamp(Mathf.Floor(countdown + 1), 0, 5).ToString();
+		UpdateWaveCountdown();
+		UpdateMoney();
 	}
 
 	// needs to be IEnumerator in order to do a coroutine
@@ -46,4 +47,14 @@ public class WaveSpawner : MonoBehaviour {
 	void SpawnEnemy () {
 		Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 	}
+
+	void UpdateWaveCountdown () {
+		countdown = Mathf.Clamp (countdown, 0, Mathf.Infinity);
+		waveCountdownText.text = string.Format("{0:0.00}", countdown);
+	}
+
+	void UpdateMoney () {
+		moneyText.text = "$" + Stats.Cash;
+	}
+	
 }

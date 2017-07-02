@@ -35,5 +35,6 @@ public class Bullet : MonoBehaviour {
 		// TODO: Change this so that it depends on enemy health!!!
 		Destroy (target.gameObject);
 		Destroy (gameObject);
+		Stats.Cash += 10;
 	}
 }

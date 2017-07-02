@@ -3,12 +3,15 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour {
 
+	[Header("Hover Colors")]
 	public Color hoverColor;
+	public Color notEnoughMoneyColor;
 	private Color originalColor;
-	private GameObject turret;
 	private Renderer r;
 	TurretBuilder turretBuilder;
 
+	[Header("Optional")]
+	public GameObject turret;
 
 	void Start () {
 		r = GetComponent<Renderer> ();
@@ -20,10 +23,15 @@ public class Node : MonoBehaviour {
 		if (EventSystem.current.IsPointerOverGameObject ()) {
 			return;
 		}
-		if (turretBuilder.GetTurretToBuild () == null) {
+		if (!turretBuilder.CanBuild) {
 			return;
 		}
-		r.material.color = hoverColor;
+		// if not enough money, change to red
+		if (turretBuilder.EnoughMoneyToBuild) {
+			r.material.color = hoverColor;
+		} else {
+			r.material.color = Color.red;
+		}
 	}
 
 	void OnMouseExit() {
@@ -34,18 +42,15 @@ public class Node : MonoBehaviour {
 		if (EventSystem.current.IsPointerOverGameObject ()) {
 			return;
 		}
-		if (turretBuilder.GetTurretToBuild () == null) {
+		if (!turretBuilder.CanBuild) {
 			return;
 		}
 		if (turret != null) {
 			// Should display this on the screen somewhere
-			Debug.Log ("Gotta destroy the turret!");
 			Destroy (turret);
-			return;
+			return; 
 		}
-		Vector3 buildArea = new Vector3 (transform.position.x, transform.position.y + 0.5f, transform.position.z);
-		GameObject turretToBuild = TurretBuilder.builder.GetTurretToBuild ();
-		turret = (GameObject)Instantiate (turretToBuild, buildArea, transform.rotation);
+		turretBuilder.BuildTurretOn(this);
 	}
 
 }
