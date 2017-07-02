@@ -20,18 +20,14 @@ public class Shop : MonoBehaviour {
 	}
 
 	public void SelectBulletTurret() {
-		Debug.Log ("bullet turret selected");
 		turretBuilder.SelectTurretToBuild (bulletTurret);
 	}
 
 	public void SelectFlamethrowerTurret() {
-		Debug.Log ("flame turret selected");
-
 		turretBuilder.SelectTurretToBuild (flamethrowerTurret);
 	}
 
 	public void SelectLaserTurret() {
-		Debug.Log ("laser turret selected");
 		turretBuilder.SelectTurretToBuild (laserTurret);
 	}
 		

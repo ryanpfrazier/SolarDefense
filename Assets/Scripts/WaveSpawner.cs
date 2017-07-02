@@ -11,10 +11,14 @@ public class WaveSpawner : MonoBehaviour {
 
 	public Transform spawnPoint;
 	private float countdown = 2f;
-	public Text waveCountdownText;
-	private int waveNumber = 1;
+	public int waveNumber = 1;
 	private int enemiesToSpawn = 0;
+
+	[Header("Canvas Texts")]
+	public Text waveCountdownText;
 	public Text moneyText;
+	public Text livesText;
+	public Text waveNumberText;
 
 	void Update () {
 		// when countdown ends, spawn the next wave
@@ -29,6 +33,8 @@ public class WaveSpawner : MonoBehaviour {
 		}
 		UpdateWaveCountdown();
 		UpdateMoney();
+		UpdateLives ();
+		UpdateWaveNumber ();
 	}
 
 	// needs to be IEnumerator in order to do a coroutine
@@ -55,6 +61,18 @@ public class WaveSpawner : MonoBehaviour {
 
 	void UpdateMoney () {
 		moneyText.text = "$" + Stats.Cash;
+	}
+
+	void UpdateLives() {
+		livesText.text = Stats.Lives + " Lives";
+	}
+
+	void UpdateWaveNumber() {
+		if (waveNumber == 1) {
+			waveNumberText.text = "Wave 1";
+		} else {
+			waveNumberText.text = "Wave " + (waveNumber - 1);
+		}
 	}
 	
 }

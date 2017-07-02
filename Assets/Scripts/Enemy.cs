@@ -30,9 +30,14 @@ public class Enemy : MonoBehaviour {
 		}
 		// Destroy enemy game object if it reaches the final waypoint
 		if (waypointIndex >= Waypoints.points.Length) {
-			Destroy (gameObject);
+			EnemyReachesSun ();
 			return;
 		}
 		target = Waypoints.points [waypointIndex];
+	}
+
+	void EnemyReachesSun () {
+		Stats.Lives--;
+		Destroy (gameObject);
 	}
 }
