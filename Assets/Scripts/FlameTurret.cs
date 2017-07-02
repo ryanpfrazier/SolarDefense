@@ -18,7 +18,7 @@ public class FlameTurret : MonoBehaviour {
 	[Header("Turret Settings")]
 	public string enemyTag = "Enemy";
 	public Transform rotationPoint; 
-	public float rotationSpeed = 10f;
+	public float rotationSpeed = 100f;
 
 
 	// Shows Turret Range
@@ -29,7 +29,7 @@ public class FlameTurret : MonoBehaviour {
 
 	void Start () {
 		// Only call update target twice per second (saves computing power)
-		InvokeRepeating ("UpdateTarget", 0f, .5f);
+		InvokeRepeating ("UpdateTarget", 0f, .1f);
 	}
 
 	void Update () {

@@ -6,12 +6,14 @@ public class FlamethrowerScript : MonoBehaviour {
 	public Transform firePoint;
 	public float damageRadius;
 	public float speed;
+	public GameObject flameParticleImpact;
+	private bool hasTargetBeenHit = false;
 
 
 	public void ChaseTarget (Transform flameTarget) {
 		target = flameTarget;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (target == null) {
@@ -24,8 +26,7 @@ public class FlamethrowerScript : MonoBehaviour {
 
 	void HitTarget() {
 		// TODO: Change this so that it depends on enemy health!!!
-//		Destroy (target.gameObject, 1f);
-//		Destroy (gameObject, 1f);
+		MakeExplosion ();
 		if (damageRadius > 0f) {
 			Explode ();
 		} else {
@@ -51,21 +52,28 @@ public class FlamethrowerScript : MonoBehaviour {
 		Collider[] colliders = Physics.OverlapSphere (transform.position, damageRadius);
 		foreach (Collider collider in colliders) {
 			if (collider.tag == "Enemy") {
-				Debug.Log("found an enemy");
 				Damage (collider.transform);
-			} else {
-				Debug.Log (collider.tag);
-			}
+			} 
 		}
 	}
 
 	void Damage(Transform enemy) {
-		Debug.Log (enemy.tag);
 		Destroy (enemy.gameObject, 1f);
+		Destroy (gameObject, 0.5f);
 	}
 
 	void OnDrawGizmosSelected () {
 		Gizmos.color = Color.red;
 		Gizmos.DrawWireSphere (transform.position, damageRadius);
+	}
+
+	void MakeExplosion () {
+//		Debug.Log (target.transform.Find ("FireExplosion(Clone)"));
+		if (target.transform.Find ("FireExplosion(Clone)")) {
+			return;
+		}
+		GameObject particleImpact = (GameObject)Instantiate (flameParticleImpact, target.position, target.rotation);
+		particleImpact.transform.parent = target.transform;
+		Destroy (particleImpact, 1.5f);
 	}
 }
