@@ -10,9 +10,8 @@ public class LaserTurret : MonoBehaviour {
 	[Header("Turret Attributes")]
 
 	public float range = 15f;
-	public float fireRate = 1f;
+	public float fireRate = 1000f;
 	private float fireCountdown = 0f;
-//	public GameObject laserParticles;
 	public Transform laserPoint;
 	public Transform laserPointBack;
 
@@ -92,8 +91,6 @@ public class LaserTurret : MonoBehaviour {
 	void Shoot() {
 		laser.SetPosition (0, laserPoint.position);
 		laser.SetPosition (1, target.transform.position);
-//		GameObject particles = (GameObject)Instantiate (laserParticles, laserPoint.position, laserPoint.rotation);
-//		Destroy (particles, 1.5f);
 	}
 
 	void DeleteLaser() {
