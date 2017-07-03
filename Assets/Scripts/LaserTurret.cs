@@ -14,6 +14,7 @@ public class LaserTurret : MonoBehaviour {
 	private float fireCountdown = 0f;
 	public Transform laserPoint;
 	public Transform laserPointBack;
+	public GameObject laserParticles;
 
 	[Header("Turret Settings")]
 	public string enemyTag = "Enemy";
@@ -91,6 +92,9 @@ public class LaserTurret : MonoBehaviour {
 	void Shoot() {
 		laser.SetPosition (0, laserPoint.position);
 		laser.SetPosition (1, target.transform.position);
+		Vector3 dir = laserPoint.position - target.position;
+		GameObject particles = (GameObject)Instantiate (laserParticles, target.position, Quaternion.LookRotation(dir));
+		Destroy (particles, 0.1f);
 	}
 
 	void DeleteLaser() {
