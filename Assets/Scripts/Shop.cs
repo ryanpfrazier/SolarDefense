@@ -22,12 +22,8 @@ public class Shop : MonoBehaviour {
 
 	void Start() {
 		turretBuilder = TurretBuilder.builder;
-		bulletTurretCost.text = "$" + bulletTurret.cost.ToString();
-		flamethrowerTurretCost.text = "$" + flamethrowerTurret.cost.ToString();
-		laserTurretCost.text = "$" + laserTurret.cost.ToString();
-		bulletTurretName.text = bulletTurret.name.ToString();
-		flamethrowerTurretName.text = laserTurret.name.ToString();
-		laserTurretName.text = laserTurret.name.ToString();
+		SetTurretCosts ();
+		SetTurretNames () ;
 	}
 
 	public void SelectBulletTurret() {
@@ -41,5 +37,16 @@ public class Shop : MonoBehaviour {
 	public void SelectLaserTurret() {
 		turretBuilder.SelectTurretToBuild (laserTurret);
 	}
-		
+
+	public void SetTurretCosts () {
+		bulletTurretCost.text = "$" + bulletTurret.cost.ToString();
+		flamethrowerTurretCost.text = "$" + flamethrowerTurret.cost.ToString();
+		laserTurretCost.text = "$" + laserTurret.cost.ToString();
+	}
+
+	public void SetTurretNames () {
+		bulletTurretName.text = bulletTurret.name;
+		flamethrowerTurretName.text = flamethrowerTurret.name;
+		laserTurretName.text = laserTurret.name;
+	}
 }

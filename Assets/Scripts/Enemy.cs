@@ -15,8 +15,8 @@ public class Enemy : MonoBehaviour {
 		target = Waypoints.points [0];
 	}
 
-	public void SubtractHealth (int weaponDamageValue) {
-		health -= weaponDamageValue;
+	public void SubtractHealth (int damage) {
+		health -= damage;
 		if (health <= 0) {
 			Die ();
 		}

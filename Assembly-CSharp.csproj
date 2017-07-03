@@ -54,6 +54,7 @@
      <Compile Include="Assets\Imported Assets\PyroParticles\Prefab\Script\FireProjectileScript.cs" />
      <Compile Include="Assets\Imported Assets\PyroParticles\Prefab\Script\MeteorSwarmScript.cs" />
      <Compile Include="Assets\Imported Assets\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
+     <Compile Include="Assets\LaserTurret.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletTurret.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />

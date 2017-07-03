@@ -12,11 +12,22 @@ public class GameManager : MonoBehaviour {
 		}
 		if (Stats.Lives <= 0) {
 			EndTheGame ();
-		}	
+		}
+		if (Input.GetKeyDown(KeyCode.P)) {
+			Pause ();
+		}
 	}
 
 	void EndTheGame () {
 		Debug.Log ("GAME OVER DORK");
 		gameOver = true;
+	}
+
+	void Pause () {
+		if (Time.timeScale == 1) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
 	}
 }

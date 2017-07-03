@@ -3,6 +3,7 @@
 public class Bullet : MonoBehaviour {
 
 	private Transform target;
+	public int damage;
 	public float speed;
 	public GameObject bulletImpactParticle;
 
@@ -33,6 +34,7 @@ public class Bullet : MonoBehaviour {
 		GameObject particleImpact = (GameObject)Instantiate (bulletImpactParticle, transform.position, transform.rotation);
 		Destroy (particleImpact, 1.5f);
 		// TODO: Change this so that it depends on enemy health!!!
+//		GameObject e = (GameObject)Enemy.
 		Destroy (target.gameObject);
 		Destroy (gameObject);
 		Stats.Cash += 10;
