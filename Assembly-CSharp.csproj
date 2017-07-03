@@ -54,7 +54,6 @@
      <Compile Include="Assets\Imported Assets\PyroParticles\Prefab\Script\FireProjectileScript.cs" />
      <Compile Include="Assets\Imported Assets\PyroParticles\Prefab\Script\MeteorSwarmScript.cs" />
      <Compile Include="Assets\Imported Assets\PyroParticles\Prefab\Script\SingleLineAttribute.cs" />
-     <Compile Include="Assets\LaserTurret.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\BulletTurret.cs" />
      <Compile Include="Assets\Scripts\CameraScript.cs" />
@@ -62,6 +61,7 @@
      <Compile Include="Assets\Scripts\FlameTurret.cs" />
      <Compile Include="Assets\Scripts\FlamethrowerScript.cs" />
      <Compile Include="Assets\Scripts\FlamethrowerTurret.cs" />
+     <Compile Include="Assets\Scripts\LaserTurret.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
      <Compile Include="Assets\Scripts\Shop.cs" />
      <Compile Include="Assets\Scripts\Stats.cs" />
