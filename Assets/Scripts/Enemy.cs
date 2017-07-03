@@ -3,14 +3,27 @@
 public class Enemy : MonoBehaviour {
 
 	public float speed = 10f;
+	public int health;
 
 	private Transform target;
 	private float dist;
 	private int waypointIndex;
 	public float rotationSpeed;
 
+
 	void Start () {
 		target = Waypoints.points [0];
+	}
+
+	public void SubtractHealth (int weaponDamageValue) {
+		health -= weaponDamageValue;
+		if (health <= 0) {
+			Die ();
+		}
+	}
+
+	void Die() {
+		Destroy (gameObject);
 	}
 
 	void Update () {
