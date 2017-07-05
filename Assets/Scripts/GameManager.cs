@@ -4,7 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	private bool gameOver = false;
+	public static bool gameOver;
+	public static bool pause;
+	public GameObject gameOverUI;
+	public GameObject pauseUI;
+	public CameraScript camera;
+
+	void Start () {
+		gameOver = false;
+		pause = false;
+		gameOverUI.SetActive (false);
+		pauseUI.SetActive (false);
+	}
 
 	void Update () {
 		if (gameOver) {
@@ -16,18 +27,27 @@ public class GameManager : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.P)) {
 			Pause ();
 		}
+		if (Input.GetKeyDown(KeyCode.E)) {
+			EndTheGame ();
+		}
 	}
 
 	void EndTheGame () {
-		Debug.Log ("GAME OVER DORK");
 		gameOver = true;
+		gameOverUI.SetActive (true);
 	}
 
-	void Pause () {
+	public void Pause () {
 		if (Time.timeScale == 1) {
+			camera.enabled = false;
+			pauseUI.SetActive (true);
 			Time.timeScale = 0;
 		} else {
+			camera.enabled = true;
+			pauseUI.SetActive (false);
 			Time.timeScale = 1;
 		}
 	}
+
+
 }

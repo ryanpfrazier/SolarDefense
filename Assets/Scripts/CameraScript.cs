@@ -18,7 +18,11 @@ public class CameraScript : MonoBehaviour {
 
 
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Tab)) {
+		if (GameManager.gameOver) {
+			this.enabled = false;
+			return;
+		}
+		if (Input.GetKeyDown(KeyCode.Space)) {
 			canMove = !canMove;
 		}
 		// Use Escape to stop movement controls

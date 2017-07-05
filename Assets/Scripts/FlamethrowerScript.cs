@@ -66,9 +66,6 @@ public class FlamethrowerScript : MonoBehaviour {
 		GameObject emptyObj = (GameObject)Instantiate (empty, target.position, target.rotation);
 		emptyObj.transform.parent = target.transform;
 		// Make sure to check the destroying enemy.gameobject on health down
-//		Destroy (enemy.gameObject, 1f);
-//		Destroy (gameObject);
-		Debug.Log ("health down");
 		MakeExplosion ();
 //		Stats.Cash += 10;
 	}

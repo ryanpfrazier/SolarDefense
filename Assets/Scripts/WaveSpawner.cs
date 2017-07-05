@@ -48,6 +48,7 @@ public class WaveSpawner : MonoBehaviour {
 			yield return new WaitForSeconds (timeBetweenEnemies);
 		}
 		waveNumber++;
+		Stats.waves++;
 	}
 
 	void SpawnEnemy () {
@@ -64,7 +65,11 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	void UpdateLives() {
-		livesText.text = Stats.Lives + " Lives";
+		if (Stats.Lives == 1) {
+			livesText.text = Stats.Lives + " Life";
+		} else {
+			livesText.text = Mathf.Clamp(Stats.Lives, 0f, Mathf.Infinity) + " Lives";
+		}
 	}
 
 	void UpdateWaveNumber() {
