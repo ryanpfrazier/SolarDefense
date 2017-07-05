@@ -2,5 +2,5 @@
 Solar Defense is a tower defense game built using the Unity engine.
 
 ## Deployed version
-solardefense.surge.sh
-solardefense.herokuapp.com
+- http://www.solardefense.surge.sh
+- http://www.solardefense.herokuapp.com
