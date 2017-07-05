@@ -13,8 +13,4 @@ public class GameOver : MonoBehaviour {
 	public void Retry() {
 		SceneManager.LoadScene (0);
 	}
-
-	public void MainMenu() {
-		Debug.Log ("going to main menu");
-	}
 }

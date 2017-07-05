@@ -6,6 +6,8 @@ public class WaveSpawner : MonoBehaviour {
 
 	[Header("Wave Attributes")]
 	public Transform enemyPrefab;
+	public Transform harderEnemyPrefab;
+	public Transform hardestEnemyPrefab;
 	public float timeBetweenWaves = 5f;
 	public float timeBetweenEnemies;
 
@@ -21,6 +23,11 @@ public class WaveSpawner : MonoBehaviour {
 	public Text waveNumberText;
 
 	void Update () {
+		if (waveNumber > 25) {
+			timeBetweenEnemies = 0.125f;
+		} else if (waveNumber > 15) {
+			timeBetweenEnemies = 0.25f;
+		}
 		// when countdown ends, spawn the next wave
 		if (countdown <= 0f) {
 			StartCoroutine(SpawnWave());
@@ -52,7 +59,13 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	void SpawnEnemy () {
-		Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		if (waveNumber > 25) {
+			Instantiate (hardestEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		} else if (waveNumber > 15) {
+			Instantiate (harderEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		} else {
+			Instantiate (enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		}
 	}
 
 	void UpdateWaveCountdown () {

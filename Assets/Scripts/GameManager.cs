@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour {
 	public static bool gameOver;
 	public static bool pause;
 	public static bool gameOn;
-	private bool wasCameraEnabled = false;
 	public GameObject gameOverUI;
 	public GameObject pauseUI;
 	public GameObject mainMenuUI;
