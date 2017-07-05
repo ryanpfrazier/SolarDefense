@@ -1,0 +1,19 @@
+<linker>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="Shop">
+			<method name="SelectLaserTurret"/>
+			<method name="SelectBulletTurret"/>
+			<method name="SelectFlamethrowerTurret"/>
+		</type>
+		<type fullname="GameOver">
+			<method name="Retry"/>
+		</type>
+		<type fullname="MainMenu">
+			<method name="StartGame"/>
+		</type>
+		<type fullname="Pause">
+			<method name="MainMenu"/>
+			<method name="Resume"/>
+		</type>
+	</assembly>
+</linker>

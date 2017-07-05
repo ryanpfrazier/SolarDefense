@@ -22,6 +22,10 @@ public class CameraScript : MonoBehaviour {
 			this.enabled = false;
 			return;
 		}
+		if (!GameManager.gameOn) {
+			this.enabled = false;
+			return;
+		}
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			canMove = !canMove;
 		}

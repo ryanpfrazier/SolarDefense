@@ -6,11 +6,16 @@ public class GameManager : MonoBehaviour {
 
 	public static bool gameOver;
 	public static bool pause;
+	public static bool gameOn;
+	private bool wasCameraEnabled = false;
 	public GameObject gameOverUI;
 	public GameObject pauseUI;
+	public GameObject mainMenuUI;
 	public CameraScript camera;
 
 	void Start () {
+		mainMenuUI.SetActive (true);
+		gameOn = false;
 		gameOver = false;
 		pause = false;
 		gameOverUI.SetActive (false);
@@ -21,14 +26,15 @@ public class GameManager : MonoBehaviour {
 		if (gameOver) {
 			return;
 		}
+		if (gameOn) {
+			camera.enabled = true;
+			mainMenuUI.SetActive (false);
+		}
 		if (Stats.Lives <= 0) {
 			EndTheGame ();
 		}
 		if (Input.GetKeyDown(KeyCode.P)) {
 			Pause ();
-		}
-		if (Input.GetKeyDown(KeyCode.E)) {
-			EndTheGame ();
 		}
 	}
 
@@ -39,11 +45,9 @@ public class GameManager : MonoBehaviour {
 
 	public void Pause () {
 		if (Time.timeScale == 1) {
-			camera.enabled = false;
 			pauseUI.SetActive (true);
 			Time.timeScale = 0;
 		} else {
-			camera.enabled = true;
 			pauseUI.SetActive (false);
 			Time.timeScale = 1;
 		}
