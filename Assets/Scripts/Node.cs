@@ -8,7 +8,16 @@ public class Node : MonoBehaviour {
 	public Color notEnoughMoneyColor;
 	private Color originalColor;
 	private Renderer r;
+	private TurretPrefabClass sellingTurret;
 	TurretBuilder turretBuilder;
+
+	public TurretPrefabClass bulletTurret;
+	public int bulletTurretCost = 50;
+	public TurretPrefabClass flamethrowerTurret;
+	public int flamethrowerTurretCost = 125;
+	public TurretPrefabClass laserTurret;
+	public int laserTurretCost = 175;
+
 
 	[Header("Optional")]
 	public GameObject turret;
@@ -46,11 +55,19 @@ public class Node : MonoBehaviour {
 			return;
 		}
 		if (turret != null) {
+			if (turret.ToString().Contains("Bullet")) {
+				Stats.Cash += bulletTurretCost;
+			}
+			if (turret.ToString().Contains("Flamethrower")) {
+				Stats.Cash += flamethrowerTurretCost;
+			}
+			if (turret.ToString().Contains("Laser")) {
+				Stats.Cash += laserTurretCost;
+			}
 			// Should display this on the screen somewhere
 			Destroy (turret);
 			return; 
 		}
 		turretBuilder.BuildTurretOn(this);
 	}
-
 }

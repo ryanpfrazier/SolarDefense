@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
 	private float dist;
 	private int waypointIndex;
 	public float rotationSpeed;
-
+	public bool enemyAlive = true;
 
 	void Start () {
 		target = Waypoints.points [0];
@@ -17,13 +17,15 @@ public class Enemy : MonoBehaviour {
 
 	public void SubtractHealth (int damage) {
 		health -= damage;
-		if (health <= 0) {
-			Die ();
+		if (health <= 0 && enemyAlive) {
+			enemyAlive = false;
+			DieAndProfit ();
 		}
 	}
 
-	void Die() {
+	void DieAndProfit() {
 		Destroy (gameObject);
+		Stats.Cash += 10;
 	}
 
 	void Update () {

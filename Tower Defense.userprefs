@@ -2,16 +2,17 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy.cs">
     <Files>
-      <File FileName="Assets/Scripts/FlameTurret.cs" Line="82" Column="3" />
-      <File FileName="Assets/Scripts/Shop.cs" Line="30" Column="35" />
-      <File FileName="Assets/Scripts/Node.cs" Line="12" Column="2" />
+      <File FileName="Assets/Scripts/Enemy.cs" Line="24" Column="4" />
+      <File FileName="Assets/Scripts/FlameTurret.cs" Line="19" Column="35" />
+      <File FileName="Assets/Scripts/Shop.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Node.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/TurretBuilder.cs" Line="17" Column="64" />
-      <File FileName="Assets/Scripts/Bullet.cs" Line="39" Column="3" />
-      <File FileName="Assets/Scripts/FlamethrowerScript.cs" Line="35" Column="19" />
-      <File FileName="Assets/Scripts/TurretPrefabClass.cs" Line="9" Column="1" />
-      <File FileName="Assets/Scripts/Stats.cs" Line="8" Column="31" />
-      <File FileName="Assets/Scripts/WaveSpawner.cs" Line="75" Column="4" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="19" Column="19" />
+      <File FileName="Assets/Scripts/FlamethrowerScript.cs" Line="66" Column="49" />
+      <File FileName="Assets/Scripts/TurretPrefabClass.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Stats.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WaveSpawner.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Bullet.cs" Line="40" Column="37" NotebookId="1" />
+      <File FileName="Assets/Scripts/BulletTurret.cs" Line="1" Column="18" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

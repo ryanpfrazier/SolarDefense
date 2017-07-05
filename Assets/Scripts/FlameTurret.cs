@@ -87,5 +87,6 @@ public class FlameTurret : MonoBehaviour {
 		if (flamethrowerScript != null) {
 			flamethrowerScript.ChaseTarget (target);
 		}
+		Destroy (flame, 0.125f);
 	}
 }

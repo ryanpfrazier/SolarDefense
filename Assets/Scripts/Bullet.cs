@@ -3,7 +3,8 @@
 public class Bullet : MonoBehaviour {
 
 	private Transform target;
-	public int damage;
+	public int damageAmount;
+	public bool canHit = true;
 	public float speed;
 	public GameObject bulletImpactParticle;
 
@@ -21,7 +22,8 @@ public class Bullet : MonoBehaviour {
 		// speed to move each frame
 		float distanceToMove = speed * Time.deltaTime;
 		// When bullet reaches target
-		if (dir.magnitude <= distanceToMove) {
+		if (dir.magnitude <= distanceToMove && canHit) {
+			canHit = false;
 			HitTarget ();
 			return;
 		}
@@ -35,8 +37,16 @@ public class Bullet : MonoBehaviour {
 		Destroy (particleImpact, 1.5f);
 		// TODO: Change this so that it depends on enemy health!!!
 //		GameObject e = (GameObject)Enemy.
-		Destroy (target.gameObject);
+//		Destroy (target.gameObject);
 		Destroy (gameObject);
-		Stats.Cash += 10;
+//		Stats.Cash += 10;
+		HealthDown (target);
+	}
+
+	void HealthDown (Transform enemy) {
+		Enemy e = enemy.GetComponent<Enemy> ();
+		if (e != null) {
+			e.SubtractHealth (damageAmount);
+		}
 	}
 }

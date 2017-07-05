@@ -34,5 +34,4 @@ public class TurretBuilder : MonoBehaviour {
 		Destroy (particles, 5f);
 		node.turret = turret; 
 	}
-
 }

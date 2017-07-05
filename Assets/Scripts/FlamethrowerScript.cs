@@ -6,6 +6,7 @@ public class FlamethrowerScript : MonoBehaviour {
 	public Transform firePoint;
 	public float damageRadius;
 	public float speed;
+	public int damageAmount;
 	public GameObject flameParticleImpact;
 	public GameObject empty;
 
@@ -57,17 +58,19 @@ public class FlamethrowerScript : MonoBehaviour {
 	}
 
 	void Damage(Transform enemy) {
+		HealthDown(enemy);
 		if (target.transform.Find ("Empty(Clone)")) {
-			Destroy (enemy.gameObject, 1f);
+//			Destroy (enemy.gameObject, 1f);
 			return;
 		}
 		GameObject emptyObj = (GameObject)Instantiate (empty, target.position, target.rotation);
 		emptyObj.transform.parent = target.transform;
 		// Make sure to check the destroying enemy.gameobject on health down
-		Destroy (enemy.gameObject, 1f);
-		Destroy (gameObject);
+//		Destroy (enemy.gameObject, 1f);
+//		Destroy (gameObject);
+		Debug.Log ("health down");
 		MakeExplosion ();
-		Stats.Cash += 10;
+//		Stats.Cash += 10;
 	}
 
 	void OnDrawGizmosSelected () {
@@ -80,6 +83,13 @@ public class FlamethrowerScript : MonoBehaviour {
 			return;
 		}
 		GameObject particleImpact = (GameObject)Instantiate (flameParticleImpact, target.position, target.rotation);
-		Destroy (particleImpact, 1.5f);
+		Destroy (particleImpact, 0.25f);
+	}
+
+	void HealthDown (Transform enemy) {
+		Enemy e = enemy.GetComponent<Enemy> ();
+		if (e != null) {
+			e.SubtractHealth (damageAmount);
+		}
 	}
 }
