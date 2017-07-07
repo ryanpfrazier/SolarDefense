@@ -8,6 +8,8 @@ public class WaveSpawner : MonoBehaviour {
 	public Transform enemyPrefab;
 	public Transform harderEnemyPrefab;
 	public Transform hardestEnemyPrefab;
+	public Transform stupidHardEnemyPrefab;
+	public Transform bossEnemyPrefab;
 	public float timeBetweenWaves = 5f;
 	public float timeBetweenEnemies;
 
@@ -23,10 +25,16 @@ public class WaveSpawner : MonoBehaviour {
 	public Text waveNumberText;
 
 	void Update () {
-		if (waveNumber > 25) {
+		if (waveNumber > 35) {
+			timeBetweenEnemies = 0.1f;
+			timeBetweenWaves = 2.5f;
+		}
+		else if (waveNumber > 25) {
 			timeBetweenEnemies = 0.125f;
 		} else if (waveNumber > 15) {
 			timeBetweenEnemies = 0.25f;
+		} else {
+			timeBetweenEnemies = 0.5f;
 		}
 		// when countdown ends, spawn the next wave
 		if (countdown <= 0f) {
@@ -49,6 +57,10 @@ public class WaveSpawner : MonoBehaviour {
 	IEnumerator SpawnWave () {
 		enemiesToSpawn = waveNumber;
 		for (int i = 0; i < waveNumber; i++) {
+			if (waveNumber == 45) {
+				i = 44;
+				enemiesToSpawn = 1;
+			}
 			SpawnEnemy ();
 			enemiesToSpawn--;
 			// allows for enemies to spawn with a bit of time between them
@@ -59,7 +71,11 @@ public class WaveSpawner : MonoBehaviour {
 	}
 
 	void SpawnEnemy () {
-		if (waveNumber > 25) {
+		if (waveNumber == 45) {
+			Instantiate (bossEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		}else if (waveNumber > 35) {
+			Instantiate (stupidHardEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+		}else if (waveNumber > 25) {
 			Instantiate (hardestEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
 		} else if (waveNumber > 15) {
 			Instantiate (harderEnemyPrefab, spawnPoint.position, spawnPoint.rotation);

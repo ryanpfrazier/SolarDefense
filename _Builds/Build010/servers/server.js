@@ -7,16 +7,12 @@ const bodyParser = require('body-parser');
 const path = require("path")
 const cookieParser = require('cookie-parser')
 
-const classifieds = require('./routes/classifieds');
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser())
 app.use('/javascripts', express.static(__dirname + "/../client/javascripts"));
 app.use('/stylesheets', express.static(__dirname + "/../client/stylesheets"));
 app.use(express.static(path.join(__dirname, '/../client/')));
-
-app.use('/api/classifieds', classifieds);
 
 app.use('*', function (req, res, next) {
   res.sendFile('index.html', {
